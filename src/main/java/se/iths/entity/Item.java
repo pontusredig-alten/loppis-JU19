@@ -6,6 +6,12 @@ import java.time.LocalDate;
 
 @Entity
 public class Item {
+    public Item(@NotEmpty @Size(min = 5) String name, String category, int quantity, double price) {
+        this.name = name;
+        this.category = category;
+        this.quantity = quantity;
+        this.price = price;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,6 +25,10 @@ public class Item {
     private int quantity;
     private double price;
     private LocalDate createdAt;
+
+    public Item() {
+
+    }
 
     @PrePersist
     private void getCurrentDate() {

@@ -1,9 +1,13 @@
 package se.iths.rest;
 
 import se.iths.entity.Item;
+import se.iths.producerdemo.ItemProducer;
 import se.iths.service.ItemService;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.inject.Inject;
+import javax.interceptor.InvocationContext;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -13,6 +17,9 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ItemRest {
+
+
+
 
     @Inject
     ItemService itemService;
@@ -34,8 +41,9 @@ public class ItemRest {
     @Path("{id}")
     @GET
     public Item getItem(@PathParam("id") Long id) {
-        return itemService.findItemById(id);
+          return itemService.findItemById(id);
     }
+
 
     @Path("getall")
     @GET
