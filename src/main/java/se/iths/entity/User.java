@@ -1,8 +1,6 @@
 package se.iths.entity;
 
 import javax.persistence.*;
-import se.iths.entity.Item;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,8 +12,8 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Item> items = new HashSet<Item>();
 
 

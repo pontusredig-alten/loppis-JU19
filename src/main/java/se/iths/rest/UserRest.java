@@ -33,4 +33,12 @@ public class UserRest {
         return userService.getAllUsers();
     }
 
+    @Path("{id}")
+    @DELETE
+    public Response deleteUser(@PathParam("id") Long id) {
+        userService.deleteUser(id);
+        return Response.ok().entity("User with ID " + id + " was successfully deleted.").build();
+
+    }
+
 }

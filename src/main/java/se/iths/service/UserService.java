@@ -26,5 +26,9 @@ public class UserService {
         return entityManager.createQuery("SELECT u from User u", User.class).getResultList();
     }
 
+    public void deleteUser(Long id) {
+        User deleteThisUser = entityManager.find(User.class, id);
+        entityManager.remove(deleteThisUser);
+    }
 
 }
