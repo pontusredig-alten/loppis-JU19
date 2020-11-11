@@ -1,12 +1,13 @@
 package se.iths.entity;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
+
 public class Item {
-    public Item(@NotEmpty @Size(min = 5) String name, String category, int quantity, double price) {
+    public Item(@NotEmpty String name, String category, int quantity, double price) {
         this.name = name;
         this.category = category;
         this.quantity = quantity;
@@ -18,13 +19,23 @@ public class Item {
     private Long id;
 
     @NotEmpty
-    @Size(min = 5)
     private String name;
 
     private String category;
     private int quantity;
     private double price;
     private LocalDate createdAt;
+    @ManyToOne
+    @JoinColumn(name = "item_user")
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Item() {
 
