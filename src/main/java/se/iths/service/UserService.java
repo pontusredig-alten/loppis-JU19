@@ -15,9 +15,7 @@ public class UserService {
     EntityManager entityManager;
 
     public User createUser(User user) {
-        user.addItem(new Item("Soffa", "Möbler", 1, 500.00));
-        user.addItem(new Item("Strumpor", "Kläder", 10, 45.00));
-        entityManager.persist(user);
+            entityManager.persist(user);
         return user;
     }
 
@@ -30,5 +28,7 @@ public class UserService {
         User deleteThisUser = entityManager.find(User.class, id);
         entityManager.remove(deleteThisUser);
     }
+
+
 
 }

@@ -56,10 +56,42 @@ public class ItemRest {
         }
     }
 
+
     @Path("getall")
     @GET
     public List<Item> getAllItems() {
         return itemService.getAllItems();
     }
+
+    @Path("getbyname_dq/{name}")
+    @GET
+    public List<Item> getByNameDQ(@PathParam("name") String name) {
+        return itemService.getByNameDynamicQuery(name);
+    }
+
+    @Path("getbyname_np/{name}")
+    @GET
+    public List<Item> getByNameNP(@PathParam("name") String name) {
+        return itemService.getByNameNamedParameters(name);
+    }
+
+    @Path("getbyname_pp/{name}")
+    @GET
+    public List<Item> getByNamePP(@PathParam("name") String name) {
+        return itemService.getByNamePositionalParameters(name);
+    }
+
+    @Path("getsorted")
+    @GET
+    public List<Item> getAllItemsSortedByCategory() {
+        return itemService.getAllItemsSortedByCategory();
+    }
+
+    @Path("getbyprice/{minPrice}/{maxPrice}")
+    @GET
+    public List<Item> getByPrice(@PathParam("minPrice") double minPrice, @PathParam("maxPrice") double maxPrice) {
+        return itemService.getAllItemsBetweenPrice(minPrice, maxPrice);
+    }
+
 
 }

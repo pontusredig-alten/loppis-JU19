@@ -22,7 +22,6 @@ public class UserRest {
     @Path("new")
     @POST
     public Response createUser(User user) {
-
         userService.createUser(user);
         return Response.ok(user).build();
     }
@@ -38,7 +37,6 @@ public class UserRest {
     public Response deleteUser(@PathParam("id") Long id) {
         userService.deleteUser(id);
         return Response.ok().entity("User with ID " + id + " was successfully deleted.").build();
-
     }
 
 }
