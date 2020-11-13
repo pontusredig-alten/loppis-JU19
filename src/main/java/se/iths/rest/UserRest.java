@@ -26,6 +26,21 @@ public class UserRest {
         return Response.ok(user).build();
     }
 
+    @Path("update")
+    @PUT
+    public Response updateUser(User user) {
+        try {
+            userService.updateUser(user);
+            return Response.ok().build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+    }
+
+
+
+
+
     @Path("getall")
     @GET
     public List<User> getAllUsers() {

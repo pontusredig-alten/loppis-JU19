@@ -19,6 +19,11 @@ public class UserService {
         return user;
     }
 
+    public User updateUser(User user) {
+        entityManager.merge(user);
+        return user;
+    }
+
     public List<User> getAllUsers() {
         // JPQL query
         return entityManager.createQuery("SELECT u from User u", User.class).getResultList();

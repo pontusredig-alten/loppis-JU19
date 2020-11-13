@@ -17,4 +17,5 @@
         <servlet-name>h2-console</servlet-name>
         <url-pattern>/h2/*</url-pattern>
     </servlet-mapping>
+
 </web-app>
