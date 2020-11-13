@@ -32,6 +32,8 @@ public class ItemRest {
         return Response.ok(item).build();
     }
 
+
+
     @Path("{id}")
     @GET
     public Response getItem(@PathParam("id") Long id) {

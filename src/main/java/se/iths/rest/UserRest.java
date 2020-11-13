@@ -5,6 +5,7 @@ import se.iths.entity.User;
 import se.iths.service.UserService;
 
 import javax.inject.Inject;
+import javax.json.stream.JsonParsingException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -22,8 +23,12 @@ public class UserRest {
     @Path("new")
     @POST
     public Response createUser(User user) {
-        userService.createUser(user);
-        return Response.ok(user).build();
+        try {
+            userService.createUser(user);
+            return Response.ok(user).build();
+        } catch (JsonParsingException j) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
     }
 
     @Path("update")

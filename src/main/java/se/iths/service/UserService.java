@@ -24,6 +24,14 @@ public class UserService {
         return user;
     }
 
+    public User updateUser2(User user, Long id) {
+        User updateThisUser = entityManager.find(User.class, id);
+        updateThisUser.setFirstName(user.getFirstName());
+        // osv
+
+        return user;
+    }
+
     public List<User> getAllUsers() {
         // JPQL query
         return entityManager.createQuery("SELECT u from User u", User.class).getResultList();
