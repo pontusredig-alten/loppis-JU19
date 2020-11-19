@@ -2,6 +2,8 @@ package se.iths.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -14,6 +16,13 @@ public class User {
     private String lastName;
     private String email;
 
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    private Set<Item> items = new HashSet<>();
+
+    public void addItem(Item item) {
+        items.add(item);
+        item.getUsers().add(this);
+    }
 
     public User(String firstName, String lastName, String email) {
         this.firstName = firstName;
@@ -22,7 +31,6 @@ public class User {
     }
 
     public User() {
-
     }
 
 

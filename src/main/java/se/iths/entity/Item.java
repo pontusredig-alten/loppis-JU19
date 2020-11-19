@@ -1,8 +1,11 @@
 package se.iths.entity;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 
@@ -25,20 +28,11 @@ public class Item {
     private int quantity;
     private double price;
     private LocalDate createdAt;
-    @ManyToOne
-    @JoinColumn(name = "item_user")
-    private User user;
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+    @ManyToMany(mappedBy = "items", cascade = CascadeType.PERSIST)
+    private Set<User> users = new HashSet<>();
 
     public Item() {
-
     }
 
     @PrePersist
@@ -53,6 +47,10 @@ public class Item {
 
     public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Set<User> getUsers() {
+        return users;
     }
 
     public Long getId() {
