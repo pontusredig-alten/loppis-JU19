@@ -32,6 +32,13 @@ public class Item {
     @ManyToMany(mappedBy = "items", cascade = CascadeType.PERSIST)
     private Set<User> users = new HashSet<>();
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Buyer buyer;
+
+    public void setBuyer(Buyer buyer) {
+        this.buyer = buyer;
+    }
+
     public Item() {
     }
 

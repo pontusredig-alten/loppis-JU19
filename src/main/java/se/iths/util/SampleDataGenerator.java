@@ -1,5 +1,6 @@
 package se.iths.util;
 
+import se.iths.entity.Buyer;
 import se.iths.entity.Item;
 import se.iths.entity.User;
 
@@ -23,6 +24,9 @@ public class SampleDataGenerator {
         User user2 = new User("Kajsa", "Anka", "kajsa@ankeborg.com");
         User user3 = new User("Klarabella", "Ko", "klarabella@ankeborg.com");
 
+        Buyer buyer1 = new Buyer("Janne", "Långben", "goofy@ankeborg.com");
+        Buyer buyer2 = new Buyer("Alexander", "Lukas", "alex@ankeborg.com");
+
         Item item1 = new Item("Soffa", "Möbler", 1, 150.00);
         Item item2 = new Item("Stol", "Möbler", 1, 100.00);
         Item item3 = new Item("Mössa", "Kläder", 1, 123.00);
@@ -37,9 +41,14 @@ public class SampleDataGenerator {
         user3.addItem(item1);
         user3.addItem(item3);
 
+        buyer1.addItem(item3);
+        buyer2.addItem(item1);
+
         entityManager.persist(user1);
         entityManager.persist(user2);
         entityManager.persist(user3);
+        entityManager.persist(buyer1);
+        entityManager.persist(buyer2);
 
 //        entityManager.persist(new Item("Soffa", "Möbler", 1, 150.00));
 //        entityManager.persist(new Item("Stol", "Möbler", 1, 100.00));
