@@ -56,6 +56,7 @@ public class Item {
         this.createdAt = createdAt;
     }
 
+    @JsonbTransient
     public Set<User> getUsers() {
         return users;
     }

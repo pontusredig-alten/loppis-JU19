@@ -23,6 +23,11 @@ public class Buyer {
         item.setBuyer(this);
     }
 
+    public void removeItem(Item item) {
+        items.remove(item);
+        item.setBuyer(null);
+    }
+
     public Buyer(@NotEmpty String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -31,6 +36,10 @@ public class Buyer {
 
     public Buyer() {
 
+    }
+
+    public Set<Item> getItems() {
+        return items;
     }
 
     public Long getId() {

@@ -42,6 +42,7 @@ public class SampleDataGenerator {
         user3.addItem(item3);
 
         buyer1.addItem(item3);
+        buyer1.addItem(item2);
         buyer2.addItem(item1);
 
         entityManager.persist(user1);

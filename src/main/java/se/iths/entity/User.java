@@ -7,6 +7,7 @@ import java.util.Set;
 
 
 @Entity
+
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,6 +23,11 @@ public class User {
     public void addItem(Item item) {
         items.add(item);
         item.getUsers().add(this);
+    }
+
+    public void removeItem(Item item) {
+        items.remove(item);
+        item.getUsers().remove(this);
     }
 
     public User(String firstName, String lastName, String email) {

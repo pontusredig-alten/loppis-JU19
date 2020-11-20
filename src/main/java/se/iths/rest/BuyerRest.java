@@ -1,5 +1,6 @@
 package se.iths.rest;
 
+import se.iths.entity.Item;
 import se.iths.entity.User;
 import se.iths.service.BuyerService;
 
@@ -16,10 +17,11 @@ public class BuyerRest {
     @Inject
     BuyerService buyerService;
 
-//    @Path("getusersforbuyer/{id}")
-//    @GET
-//    public List<User> findUsers(@PathParam("id") Long id) {
-//        return buyerService.getAll(id);
-//    }
+
+
+
+
+
+
 
 }
