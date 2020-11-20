@@ -18,7 +18,20 @@ public class BuyerService {
     EntityManager entityManager;
 
 
+    public Set<User> getSpecificUsersForItem(String buyerName, String itemName) {
 
+       // Hämta item med relaterad data
+        Item item = (Item) entityManager
+                .createQuery("SELECT DISTINCT i FROM Item i INNER JOIN FETCH i.buyer b INNER JOIN FETCH i.users u WHERE b.firstName = :buyerName AND i.name = :itemName")
+                .setParameter("buyerName", buyerName).setParameter("itemName", itemName).getSingleResult();
+
+        // Här hämtas Set med USERS från vårat hämtade ITEM
+        Set<User> userResult = item.getUsers();
+
+        return userResult;
+
+
+    }
 
 
 }
