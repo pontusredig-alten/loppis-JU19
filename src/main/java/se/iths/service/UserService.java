@@ -1,6 +1,5 @@
 package se.iths.service;
 
-import se.iths.entity.Item;
 import se.iths.entity.User;
 
 import javax.persistence.EntityManager;
@@ -14,8 +13,10 @@ public class UserService {
     @PersistenceContext
     EntityManager entityManager;
 
+
+
     public User createUser(User user) {
-            entityManager.persist(user);
+        entityManager.persist(user);
         return user;
     }
 
@@ -24,13 +25,6 @@ public class UserService {
         return user;
     }
 
-    public User updateUser2(User user, Long id) {
-        User updateThisUser = entityManager.find(User.class, id);
-        updateThisUser.setFirstName(user.getFirstName());
-        // osv
-
-        return user;
-    }
 
     public List<User> getAllUsers() {
         // JPQL query
